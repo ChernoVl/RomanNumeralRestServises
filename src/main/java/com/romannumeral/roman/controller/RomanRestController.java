@@ -2,7 +2,6 @@ package com.romannumeral.roman.controller;
 
 import com.romannumeral.roman.service.RomanService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;

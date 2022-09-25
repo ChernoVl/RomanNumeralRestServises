@@ -2,7 +2,6 @@ package com.romannumeral.roman.service.impl;
 
 import com.romannumeral.roman.model.ArabicToRomanConverter;
 import com.romannumeral.roman.service.RomanService;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
