@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roman</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+
+<br><br><br>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card">
+            <h3 class="card-header">
+                Convert Arabic numerals to Roman
+            </h3>
+            <div class="card-body">
+                <h5 class="card-title">Enter the number</h5>
+                <form action="#" id="form">
+                    <div class="mb-3">
+                        <label for="arabicNumber" class="form-label">Arabic numerals:</label>
+                        <input type="text" class="form-control" id="arabicNumber"
+                               style="width: 100px;"
+                               maxlength="4"
+                               value="55"
+                               pattern="[1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-3][0-9][0-9][0-9]">
+                    </div>
+                    <p><b>Note:</b> Valid input from <i>1</i> to <i>3999</i> inclusive</p>
+                    <input type="submit" class="btn btn-primary">
+                </form>
+
+                <br>
+                <p id="romanNumber">Arabic ** and its Roman counterpart:</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<script>
+    const form = document.getElementById('form');
+    const ip = 'localhost';
+    const port = '8081';
+    const base_uri = 'http://' + ip + ':' + port + '/roman/api/arabic2roman?arabicNumber=';
+    const rn = document.getElementById('romanNumber');
+    const an = document.getElementById('arabicNumber');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const number = an.value;
+        const uri = base_uri + number;
+
+        if (number != '') {
+            fetch(uri)
+                .then((response) => response.text())
+                .then((data) =>
+                    rn.innerHTML = 'Arabic <b>' + number +  '</b> and its Roman counterpart: <b>' + data + '</b>');
+
+            an.value = '';
+        }
+
+    });
+</script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+</html>
