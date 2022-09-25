@@ -1,7 +1,7 @@
 server:
   port: 8080
-  servlet:
-    context-path: /roman
+#  servlet:
+#    context-path: /roman
 
 spring:
   thymeleaf:
